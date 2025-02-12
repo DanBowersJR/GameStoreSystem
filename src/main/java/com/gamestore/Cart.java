@@ -14,7 +14,19 @@ public class Cart {
         games.remove(game);
     }
 
-    public double getTotalPrice() {
+    public List<Game> getGamesInCart() {
+        return games;
+    }
+
+    public double calculateTotal() {
         return games.stream().mapToDouble(Game::getPrice).sum();
+    }
+
+    public void clearCart() {
+        games.clear();
+    }
+
+    public boolean isEmpty() {
+        return games.isEmpty();
     }
 }

@@ -1,12 +1,12 @@
 package com.gamestore;
 
 public class PurchaseManager {
-    public boolean purchase(Cart cart) {
-        if (cart.getTotalPrice() > 0) {
-            System.out.println("Purchase successful! Total: $" + cart.getTotalPrice());
-            return true;
+    public void processPurchase(Cart cart) {
+        if (cart.isEmpty()) {
+            System.out.println("Purchase failed! Your cart is empty.");
+        } else {
+            System.out.println("Purchase successful! Total: $" + cart.calculateTotal());
+            cart.clearCart();  // Clears cart after purchase
         }
-        System.out.println("Purchase failed: Cart is empty!");
-        return false;
     }
 }
