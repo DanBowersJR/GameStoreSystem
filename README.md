@@ -16,7 +16,13 @@ A simple Java CLI-based application where users can browse games, add to cart, a
 
 ## 🚀 How to Run
 
-Clone the repository:
+1️⃣ Clone the repository:
 ```sh
 git clone https://github.com/DanBowersJR/GameStoreSystem.git
+cd GameStoreSystem
 
+2️⃣ Install dependencies and build the project:
+mvn clean install
+
+3️⃣ Run the CLI application:
+mvn exec:java -Dexec.mainClass="com.gamestore.Main"
