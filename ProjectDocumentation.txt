@@ -1,0 +1,124 @@
+# Game Store System - Project Documentation
+
+## 1. Clean Code Practices with Examples
+### Clean Coding Principles
+This project follows best practices for readability and maintainability. Below are three examples:
+
+### Example 1: Meaningful Naming Conventions
+```java
+List<Game> availableGames = new ArrayList<>();
+```
+- Meaningful names improve code clarity.
+
+### Example 2: Single Responsibility Principle (SRP)
+```java
+public class PurchaseManager {
+    public boolean processPurchase(Cart cart) {
+        if (cart.isEmpty()) {
+            System.out.println("Purchase failed! Your cart is empty.");
+            return false;
+        } else {
+            System.out.println("Purchase successful! Total: $" + cart.calculateTotal());
+            cart.clearCart();
+            return true;
+        }
+    }
+}
+```
+- Each class has a specific responsibility, ensuring modularity.
+
+### Example 3: Avoiding Hardcoded Values
+```java
+public void displayTotalPrice() {
+    System.out.println("Total Price: $" + calculateTotal());
+}
+```
+- Avoids repetitive logic, making the code reusable.
+
+---
+
+## 2. Project Explanation
+### Functionality
+- View, add, and remove games from the cart.
+- Checkout and process purchases using a CLI-based system.
+
+### How It Works
+1. `Store` class holds available games.
+2. `Cart` class manages user selections.
+3. `PurchaseManager` processes purchases.
+4. `Main` provides a CLI menu for user interaction.
+
+### Test Cases
+**CartTest.java**
+```java
+@Test
+void testSuccessfulPurchase() {
+    Cart cart = new Cart();
+    cart.addGame(new Game("Super Mario Odyssey", 49.99));
+    cart.addGame(new Game("The Legend of Zelda", 59.99));
+
+    PurchaseManager purchaseManager = new PurchaseManager();
+    boolean result = purchaseManager.processPurchase(cart);
+
+    assertTrue(result);
+    assertTrue(cart.isEmpty());
+}
+```
+- Verifies that after a successful purchase, the cart is emptied.
+
+---
+
+## 3. Dependencies Used
+**Key Dependencies:**
+- **JUnit 5** (for unit testing)
+```xml
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.8.1</version>
+    <scope>test</scope>
+</dependency>
+```
+- **Maven Surefire Plugin** (for running tests)
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>3.0.0-M7</version>
+</plugin>
+```
+- Installed using:
+```sh
+mvn clean install
+```
+
+---
+
+## 4. Problems Encountered & Fixes
+### Issue 1: "Cannot find symbol" Errors
+- **Cause:** Missing method definitions.
+- **Fix:** Implemented required methods such as:
+```java
+public boolean isEmpty() {
+    return games.isEmpty();
+}
+```
+
+### Issue 2: Maven Build Failing
+- **Cause:** Missing `maven-surefire-plugin`.
+- **Fix:** Added the plugin and ran:
+```sh
+mvn clean install
+```
+
+### Issue 3: Missing CLI Functionality
+- **Cause:** Initial modifications removed execution logic.
+- **Fix:** Restored structured switch cases in `Main.java`.
+
+---
+
+## Final Notes
+The project follows clean coding principles, includes structured unit tests, and maintains modularity for better maintainability. ✅
+
+### **Project Ready for Submission!** 🚀
+
