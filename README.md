@@ -19,4 +19,4 @@ A simple Java CLI-based application where users can browse games, add to cart, a
 Clone the repository:
 ```sh
 git clone https://github.com/DanBowersJR/GameStoreSystem.git
-cd GameStoreSystem
+
